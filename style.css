@@ -1,0 +1,240 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0b1021;
+  --panel: #121833;
+  --accent: #61dafb;
+  --accent-2: #ffb86c;
+  --text: #f5f7ff;
+  --muted: #9aa1b5;
+  --border: rgba(255, 255, 255, 0.08);
+  --start: #3adb8a;
+  --goal: #f45d7e;
+  --wall: #38415f;
+  --frontier: #ffd166;
+  --visited: #7aa2f7;
+  --path: #ffeedd;
+}
+
+body {
+  background: radial-gradient(circle at 20% 20%, rgba(97, 218, 251, 0.14), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(255, 184, 108, 0.2), transparent 26%),
+    var(--bg);
+  color: var(--text);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 32px 18px 48px;
+}
+
+.app {
+  width: min(1200px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.header h1 {
+  font-size: 28px;
+  letter-spacing: 0.5px;
+}
+
+.tagline {
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.controls {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  align-items: center;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-group label {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.control-group select,
+.control-group input[type="range"] {
+  flex: 1;
+}
+
+select {
+  background: #1a2144;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  background: linear-gradient(135deg, #1f274b, #1c2244);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform 120ms ease, box-shadow 120ms ease, border 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(97, 218, 251, 0.5);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
+}
+
+.legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 14px;
+  align-items: center;
+}
+
+.cell.sample {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 4px;
+  margin-right: 6px;
+  border: 1px solid var(--border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(40, 1fr);
+  gap: 2px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.cell {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid transparent;
+  transition: background 80ms ease, transform 80ms ease, border 120ms ease;
+  cursor: pointer;
+}
+
+.cell.wall {
+  background: var(--wall);
+}
+
+.cell.start {
+  background: var(--start);
+  color: #0b1021;
+  font-weight: 700;
+}
+
+.cell.goal {
+  background: var(--goal);
+  color: #0b1021;
+  font-weight: 700;
+}
+
+.cell.frontier {
+  background: var(--frontier);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.cell.visited {
+  background: var(--visited);
+}
+
+.cell.path {
+  background: var(--path);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.tips {
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed var(--border);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.algo-info {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 6px;
+}
+
+.algo-info h2 {
+  font-size: 16px;
+}
+
+.algo-info p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(20, 1fr);
+  }
+}

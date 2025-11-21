@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathfinding Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <h1>Pathfinding Visualizer</h1>
+        <p class="tagline">A*, Dijkstra, BFS, and DFS with step-by-step animation.</p>
+      </div>
+      <div class="badges">
+        <span class="badge">Graphs</span>
+        <span class="badge">Priority Queue</span>
+        <span class="badge">Heuristics</span>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="control-group">
+        <label for="algorithm">Algorithm</label>
+        <select id="algorithm">
+          <option value="astar">A* (Manhattan)</option>
+          <option value="dijkstra">Dijkstra</option>
+          <option value="bfs">Breadth-First Search</option>
+          <option value="dfs">Depth-First Search</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="speed">Speed</label>
+        <input id="speed" type="range" min="5" max="200" value="40">
+        <span id="speedValue">40 ms</span>
+      </div>
+
+      <div class="buttons">
+        <button id="run">Run</button>
+        <button id="clearVisited">Clear Visited</button>
+        <button id="reset">Reset Grid</button>
+        <button id="randomize">Random Walls</button>
+      </div>
+    </section>
+
+    <section class="legend">
+      <span><span class="cell sample start"></span>Start</span>
+      <span><span class="cell sample goal"></span>Goal</span>
+      <span><span class="cell sample wall"></span>Wall</span>
+      <span><span class="cell sample frontier"></span>Frontier</span>
+      <span><span class="cell sample visited"></span>Visited</span>
+      <span><span class="cell sample path"></span>Path</span>
+    </section>
+
+    <main id="grid" class="grid" aria-label="Grid for pathfinding visualization"></main>
+
+    <section class="tips">
+      <p><strong>Tip:</strong> Click to add/remove walls. Shift+Click to set Start, Alt+Click to set Goal. Press Run to watch the algorithm explore.</p>
+    </section>
+
+    <section class="algo-info" aria-live="polite">
+      <h2>Algorithm</h2>
+      <p id="algoDetails">A* uses a heuristic (Manhattan) to prioritize nodes closest to the goal, balancing explored cost (g) and estimated cost-to-go (h).</p>
+    </section>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

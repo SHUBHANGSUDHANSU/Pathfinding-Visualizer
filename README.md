@@ -3,7 +3,7 @@
 Interactive grid-based pathfinding visualizer showcasing A*, Dijkstra, BFS, and DFS with real-time animations.
 
 ## Demo
-- GitHub Pages (after pushing main): `https://<your-username>.github.io/pathfinding-visualizer/`
+- GitHub Pages (after pushing main): http://127.0.0.1:3000/index.html?serverWindowId=ffb0fb39-8a35-4beb-a339-27566a6e708a
   - Ensure the repo name matches the path or adjust the URL accordingly.
 
 ## Publish to GitHub
